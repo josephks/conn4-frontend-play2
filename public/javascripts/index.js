@@ -62,14 +62,14 @@ function getSvgObjElem(filename){
        cell.className = "redcell";
        CONN4.whoseturn = "b";
                              document.getElementById("msgarea").textContent = "black's turn";
-       var redre = /redarrow/;
-       //CONN4.movecss.cssText = CONN4.movecss.cssText.replace(redre, "blackarrow");
+       jQuery(".movebutton button").removeClass("red")
+       jQuery(".movebutton button").addClass("black")
     }else{
         cell.className = "blackcell";
         CONN4.whoseturn = "r";
                                  document.getElementById("msgarea").textContent = "red's turn";
-        var blackre = /blackarrow/;
-       //CONN4.movecss.cssText = CONN4.movecss.cssText.replace(blackre, "redarrow");
+       jQuery(".movebutton button").removeClass("black")
+       jQuery(".movebutton button").addClass("red")
     }
     var arrname = ["col", "row", "diag1", "diag2"] ;
     for(var ai in arrname ){
@@ -154,6 +154,7 @@ function getSvgObjElem(filename){
      buttonrow.appendChild(newtd);
      CONN4.movetd[ic] = newtd;
      var newbutton = document.createElement("button");
+     newbutton.setAttribute("class", "red");
      var helper = function (i) {
          return function (e) {
          move(i);
