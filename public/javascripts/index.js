@@ -41,14 +41,14 @@ function getSvgObjElem(filename){
       movetd : []
    };
 
- function  move(colidx){
+function  move(colidx){
     var colarr = CONN4.boarddata.col["" + colidx];
     //find last entry that is not empty and change to color
-      //console.log("colarr (len "+colarr.length+") is: "+colarr);
+    //console.log("colarr (len "+colarr.length+") is: "+colarr);
     var cell = {};
     for(var i = colarr.length - 1 ; i >= 0; i--){
-      // console.log("i: "+i);
-      if (colarr[i].className ===  "emptycell" ){
+        // console.log("i: "+i);
+        if (colarr[i].className ===  "emptycell" ){
             cell = colarr[i];
             if(i == 0){
                 CONN4.movebutton[colidx].disabled = true;
@@ -56,20 +56,20 @@ function getSvgObjElem(filename){
                 CONN4.movebutton[colidx].className = "invisible";
             }
             break;
-      }
+        }
     }
     if(CONN4.whoseturn === "r"){
-       cell.className = "redcell";
-       CONN4.whoseturn = "b";
-                             document.getElementById("msgarea").textContent = "black's turn";
-       jQuery(".movebutton button").removeClass("red")
-       jQuery(".movebutton button").addClass("black")
+        cell.className = "redcell";
+        CONN4.whoseturn = "b";
+        jQuery("#msgarea").text("black's turn");
+        jQuery(".movebutton button").removeClass("red")
+        jQuery(".movebutton button").addClass("black")
     }else{
         cell.className = "blackcell";
         CONN4.whoseturn = "r";
-                                 document.getElementById("msgarea").textContent = "red's turn";
-       jQuery(".movebutton button").removeClass("black")
-       jQuery(".movebutton button").addClass("red")
+        jQuery("#msgarea").text("red's turn");
+        jQuery(".movebutton button").removeClass("black")
+        jQuery(".movebutton button").addClass("red")
     }
     var arrname = ["col", "row", "diag1", "diag2"] ;
     for(var ai in arrname ){
@@ -81,8 +81,7 @@ function getSvgObjElem(filename){
             return;
         }
     }
-
- }
+}
 
 
  function whowins (outerarr){ //an array of tds
