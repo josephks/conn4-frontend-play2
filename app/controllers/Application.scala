@@ -2,19 +2,20 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.twirl.api.Html
 
 object Application extends Controller {
 
   def withDims(cols: Int, rows: Int) = {
-     index(Some(cols, rows))
+     index(views.html.predef(cols, rows))
   }
 
-  def default() = { index(None) }
+  def default() = { index(views.html.dim_form()) }
 
-  def index(dims: Option[(Int, Int)]) = Action { request =>
+  def index(dim_part: Html) = Action { request =>
     implicit val req = request
     System.err.println("body class is: "+req.body.getClass())
-    val inner = views.html.index(dims)
+    val inner = views.html.index(dim_part)
     Ok(views.html.main("title", List("index.css"))(inner))
   }
 

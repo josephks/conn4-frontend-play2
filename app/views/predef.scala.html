@@ -1,0 +1,9 @@
+@(cols: Int, rows: Int)
+
+
+<form id="theform" action="#">
+<input type="hidden" id="rows" value="@rows" />
+<input type="hidden" id="cols"  value="@cols"/>
+
+</form>
+<script type='text/javascript' >jQuery().ready(createBoard)</script>
